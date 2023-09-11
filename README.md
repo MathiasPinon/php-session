@@ -9,4 +9,4 @@
     - Configuration de PHP CS Fixer 
     - Ajout du dossier bin avec dedans run-server.bat et run-server.sh
     - Ajout des scripts pour pouvoir lancer le site Web depuis Linux ou Windows 
-
+    - Intégration des composants logiciel avec une création des dossiers src/Html et public/css 
