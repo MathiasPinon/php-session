@@ -1,0 +1,21 @@
+{
+    "name": "pino0017/php-session",
+    "description": "Gestion des données de session : choix d'un pays",
+    "type": "project",
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.26"
+    },
+    "license": "Copyleft",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mathias Pinon",
+            "email": "mathias.pinon@etudiant.univ-reims.fr"
+        }
+    ],
+    "require": {}
+}

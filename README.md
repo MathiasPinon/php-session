@@ -2,4 +2,8 @@
 
 ## Mathias Pinon (pino0017)
 
-## 1 ère étapes initialisation du dépôt git 
+## Etape du projet :
+
+    - Création du git 
+    - Mise à jour du fichier composer
+    
