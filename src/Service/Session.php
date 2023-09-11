@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Service;
 
+use Exception;
 use function Symfony\Component\String\s;
 
 class Session
@@ -12,14 +13,14 @@ class Session
         if(session_status() == 2)
             return NULL ;
         elseif(session_status()==1)
-            if(!headers_sent())
-                throw Service\Exception\SessionException;
-            elseif(headers_sent())
+            if(headers_sent())
+                throw new Exception('Erreur HTTP');
+            elseif(!headers_sent())
                 session_start();
 
         elseif(session_status()==0)
-            throw Service\Exception\SessionException;
+            throw new Exception('Erreur Session désactivé');
         else
-            throw Service\Exception\SessionException; 
+            throw new Exception(Service\Exception\SessionException );
     }
 }
