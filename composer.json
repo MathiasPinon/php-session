@@ -24,7 +24,21 @@
         ],
         "fix:cs" : [
             "php vendor/bin/php-cs-fixer fix"
+        ],
+        "start:linux" : [
+            "bin/run-server.sh"
+        ],
+        "start:windows" : [
+            "bin/run-server.bat"
+        ],
+        "start": [
+            "composer start:l"
         ]
+    },
+
+    "config": {
+        "process-timeout": 0
     }
+
 }
     
