@@ -4,23 +4,30 @@ declare(strict_types=1);
 
 namespace Service;
 
-use Exception;
-use function Symfony\Component\String\s;
+use Service\Exception\SessionException;
 
 class Session
 {
-    public static function start(){
-        if(session_status() == 2)
-            return NULL ;
-        elseif(session_status()==1)
-            if(headers_sent())
-                throw new Exception('Erreur HTTP');
-            elseif(!headers_sent())
-                session_start();
+    /**
+     * @throws SessionException
+     */
+    public static function start()
+    {
+        if (PHP_SESSION_DISABLED == session_status()) {
+            throw new SessionException('Erreur Session désactivé');
+        }
+        if (PHP_SESSION_ACTIVE == session_status()) {
+            return null;
+        }
 
-        elseif(session_status()==0)
-            throw new Exception('Erreur Session désactivé');
-        else
-            throw new Exception(Service\Exception\SessionException );
+        if (PHP_SESSION_NONE == session_status()) {
+            if (headers_sent()) {
+                throw new SessionException('Headers already sent');
+            }
+            session_start();
+        }
+        if (PHP_SESSION_ACTIVE !== session_status()) {
+            throw new SessionException('Session doesnt start');
+        }
     }
 }

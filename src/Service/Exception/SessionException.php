@@ -2,7 +2,8 @@
 
 declare(strict_types=1);
 
-class SessionException extends Exception
-{
+namespace Service\Exception;
 
+class SessionException extends \Exception
+{
 }
