@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Html\Form;
 
-use src\Entity\CountryCollection;
+use Entity\CountryCollection;
+use Entity\Country;
 
 class CountrySelect
 {
@@ -70,13 +71,13 @@ class CountrySelect
 HTML;
         $listePays = CountryCollection::findAll();
         foreach ($listePays as $ligne) {
-            if ($ligne->code == $this->selectedCode) {
+            if ($ligne->getCode() == $this->selectedCode) {
                 $html .= <<<HTML
-                         <option value="{$ligne->code}" selected> {$ligne->name } </option>
+                         <option value="{$ligne->getCode()}" selected> {$ligne->getName() } </option>
                 HTML;
             } else {
                 $html .= <<<HTML
-                         <option value="{$ligne->code}"> {$ligne->name } </option>
+                         <option value="{$ligne->getCode()}"> {$ligne->getName() } </option>
                 HTML;
             }
         }
@@ -91,11 +92,12 @@ HTML;
         return $html;
     }
 
-    public function setSelectedFromRequest()
+    public function setSelectedCodeFromRequest(): void
     {
-        foreach ($_REQUEST as $ligne )
-        {
-
+        foreach ($_REQUEST as $ligne) {
+            if ($ligne == $this->name) {
+                $ligne = $this->selectedCode;
+            }
         }
     }
 }
