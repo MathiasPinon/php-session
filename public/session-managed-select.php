@@ -3,13 +3,14 @@
 declare(strict_types=1);
 
 use Html\AppWebPage;
-use Html\Form\CountrySelect;
+use Html\Form\SessionManagedCountrySelect;
 
 $webPage = new AppWebPage('Country selector');
 
-$select = new CountrySelect('country', 'Pays', 'fr');
-
+$select = new SessionManagedCountrySelect('country', 'Pays', 'fr');
+$select->setSelectedCodeFromSession();
 $select->setSelectedCodeFromRequest();
+$select->saveSelectedCodeIntoSession();
 
 $webPage->appendContent(
     <<<HTML
@@ -19,6 +20,8 @@ $webPage->appendContent(
     </form>
     HTML
 );
+$webPage->appendContent('<pre>'.print_r($_SESSION, true).'</pre>');
+
+
 
 echo $webPage->toHTML();
-

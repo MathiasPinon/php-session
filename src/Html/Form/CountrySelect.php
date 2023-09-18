@@ -53,20 +53,7 @@ class CountrySelect
     public function ToHtml(): string
     {
         $html = <<<HTML
-    <!doctype html> 
-        <html lang="fr">
-            <head>
-                <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-                <meta charset="UTF-8">
-                <title>
-                    {$this->name}
-                </title>
-            </head>
-            <body>
-                <form name="{$this->name}" method="get" > 
-                    <label>
-                    Nom des pays
-                    <select>
+                    <select name="{$this->name}">
                         <option value="">{$this->firstOption}</option>
 HTML;
         $listePays = CountryCollection::findAll();
@@ -83,10 +70,7 @@ HTML;
         }
 
         $html .= <<<HTML
-                        <button type="submit">Envoyer</button>
-                    </label>
-                </form>
-            </body>
+                    </select>
 HTML;
 
         return $html;
