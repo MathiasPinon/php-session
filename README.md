@@ -13,3 +13,4 @@
     - Création de la classe Country avec tous ses getters 
     - Création de la classe CountryCollection qui permet de prendre tous les pays de la base de donnés 
     - Création de de la classe CountrySelected qui permet de creer la page HTML
+    - Création de la classe SessionManagedCountrySelect pour modifier et sauvegarder les données dans la Session
