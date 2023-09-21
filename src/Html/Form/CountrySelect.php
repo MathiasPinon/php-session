@@ -78,10 +78,9 @@ HTML;
 
     public function setSelectedCodeFromRequest(): void
     {
-        foreach ($_REQUEST as $ligne) {
-            if ($ligne == $this->name) {
-                $ligne = $this->selectedCode;
-            }
+
+        if (isset($_REQUEST[$this->name])) {
+            $this->setSelectedCode($_REQUEST[$this->name]);
         }
     }
 }

@@ -8,10 +8,6 @@ use Html\Form\SessionManagedCountrySelect;
 $webPage = new AppWebPage('Country selector');
 
 $select = new SessionManagedCountrySelect('country', 'Pays', 'fr');
-$select->setSelectedCodeFromSession();
-$select->setSelectedCodeFromRequest();
-$select->saveSelectedCodeIntoSession();
-
 $webPage->appendContent(
     <<<HTML
     <form class="country-selector">
